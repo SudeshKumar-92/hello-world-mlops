@@ -127,3 +127,16 @@ The .github/workflows/ folder is mandatory — GitHub only looks there.
           name: trained-model
           path: artifacts/
 <img width="713" height="367" alt="image" src="https://github.com/user-attachments/assets/a38caf43-942b-48ec-a7cc-cbd884b20d77" />
+
+
+Azure DevOps uses a different CI/CD system called Azure Pipelines, which has its own YAML syntax.
+<img width="1472" height="866" alt="image" src="https://github.com/user-attachments/assets/df9c8ee7-adc7-463d-8604-3e0918c9cf1c" />
+
+
+
+
+
+
+
+
+
