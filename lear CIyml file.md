@@ -58,9 +58,72 @@ yaml    steps:
       - name: Train model
         run: python train.py
 
+--------------------------------------------------------
+Complete final file
+name: CI - Train and Save Model
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  train-model:
+    name: Train and Save
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Upgrade pip
+        run: python -m pip install --upgrade pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Create artifacts folder
+        run: mkdir -p artifacts
+
+      - name: Train model
+        run: python train.py
+
+      - name: Upload model artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: trained-model
+          path: artifacts/
+
+
+
+
+
+
+
+
+-----------------------------------------------------
+Where does this file go in your project?
+titanic-model/
+├── .github/
+│   └── workflows/
+│       └── ci.yml        ← exactly here
+├── artifacts/
+├── train.py
+├── predict.py
+└── requirements.txt
+The .github/workflows/ folder is mandatory — GitHub only looks there.
+        
+
       # Step 7: Upload the saved .pkl file
       - name: Upload model artifact
         uses: actions/upload-artifact@v4
         with:
           name: trained-model
           path: artifacts/
+<img width="713" height="367" alt="image" src="https://github.com/user-attachments/assets/a38caf43-942b-48ec-a7cc-cbd884b20d77" />
